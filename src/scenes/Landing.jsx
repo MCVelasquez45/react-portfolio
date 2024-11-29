@@ -40,14 +40,14 @@ const Landing = ({ setSelectedPage }) => {
             <img
               alt="profile"
               className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[600px] rounded-t-full object-cover h-[400px]"
-              src="assets/profileImg.jpg"
+              src="assets/cover.jpg"
             />
           </div>
         ) : (
           <img
             alt="profile"
             className="z-10 w-full max-w-[400px] md:max-w-[400px] rounded-t-full object-cover h-[600px]"
-            src="assets/profileImg.jpg"
+            src="assets/cover.jpg"
           />
         )}
       </div>
