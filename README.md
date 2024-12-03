@@ -32,7 +32,9 @@ To run this project locally:
 2.
    cd portfolio-website
 
-3. npm start
+3. npm i
+
+4. npm start
 
 
 
