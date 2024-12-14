@@ -26,8 +26,7 @@ const Project = ({ title, link }) => {
       <div className={overlayStyles}>
         <p className="text-2xl font-playfair">{title}</p>
         <p className="mt-7">
-          Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla
-          porttitor accumsan tincidunt.
+          These projects showcase a variety of tech stacks I am currently working with, reflecting my passion for exploring innovative solutions and refining my technical skills. I’d be happy to discuss my development processes in detail—feel free to reach out! Additionally, you can view all the code for these projects on my GitHub.
         </p>
         {/* Conditional rendering of external link */}
         {link && (
@@ -70,8 +69,8 @@ const Projects = () => {
           </div>
         </div>
         <p className="mt-10 mb-10">
-  Explore a curated collection of my software development projects, each reflecting my skills in front-end and back-end development. From building dynamic user interfaces to implementing robust back-end functionality, these projects demonstrate creativity, technical expertise, and problem-solving skills. Each project highlights a unique challenge and the tools and technologies used to overcome it, such as React, Node.js, MongoDB, and more.
-</p>
+          Explore a curated collection of my software development projects, each reflecting my skills in front-end and back-end development. From building dynamic user interfaces to implementing robust back-end functionality, these projects demonstrate creativity, technical expertise, and problem-solving skills. Each project highlights a unique challenge and the tools and technologies used to overcome it, such as React, Node.js, MongoDB, and more.
+        </p>
 
       </motion.div>
 
@@ -91,7 +90,7 @@ const Projects = () => {
           >
             BEAUTIFUL USER INTERFACES
           </div>
-          <Project title="Project 1" link="https://spotiy-api-project-rux9.vercel.app/"/>
+          <Project title="Project 1" link="https://spotiy-api-project-rux9.vercel.app/" />
           <Project title="Project 2" />
 
           {/* ROW 2 */}

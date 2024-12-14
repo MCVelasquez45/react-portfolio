@@ -42,7 +42,7 @@ const Testimonials = () => {
         >
           <p className="font-playfair text-6xl">“</p>
           <p className="text-center text-xl">
-            A auctor pharetra hendrerit mattis amet etiam interdum platea.
+          Mark’s attention to detail and commitment to delivering high-quality work make him an invaluable team member. He’s a great collaborator who always goes the extra mile.
           </p>
         </motion.div>
 
@@ -60,8 +60,7 @@ const Testimonials = () => {
         >
           <p className="font-playfair text-6xl">“</p>
           <p className="text-center text-xl">
-            Aliquam aliquet integer ut fames odio in at. At magna ornare dictum
-            lectus.
+          Working with Mark is a pleasure—his technical expertise and creative problem-solving consistently bring fresh ideas to the table.
           </p>
         </motion.div>
 
@@ -79,7 +78,7 @@ const Testimonials = () => {
         >
           <p className="font-playfair text-6xl">“</p>
           <p className="text-center text-xl">
-            Fames odio in at. At magna ornare dictum lectus.
+          Mark’s ability to explain complex concepts clearly and his dedication to team success make him a standout developer and mentor.
           </p>
         </motion.div>
       </div>
