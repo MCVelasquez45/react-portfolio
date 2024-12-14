@@ -28,7 +28,7 @@ const Landing = ({ setSelectedPage }) => {
   return (
     <section
       id="home"
-      className="md:flex md:justify-between md:items-center gap-16 md:h-full py-10"
+      className="md:flex md:justify-between md:items-center gap-16 md:h-auto py-10"
     >
       {/* IMAGE SECTION */}
       <div className="basis-3/5 z-10 mt-16 md:mt-32 flex justify-center md:order-2">
@@ -40,6 +40,9 @@ const Landing = ({ setSelectedPage }) => {
             <img
               alt="profile"
               className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[600px] rounded-t-full object-cover h-[400px]"
+              style={{
+                objectPosition: "top", // Ensure top of the image is shown
+              }}
               src="assets/cover.jpg"
             />
           </div>
@@ -47,6 +50,9 @@ const Landing = ({ setSelectedPage }) => {
           <img
             alt="profile"
             className="z-10 w-full max-w-[400px] md:max-w-[400px] rounded-t-full object-cover h-[600px]"
+            style={{
+              objectPosition: "top", // Ensure top of the image is shown
+            }}
             src="assets/cover.jpg"
           />
         )}
@@ -68,24 +74,30 @@ const Landing = ({ setSelectedPage }) => {
           <p className="text-5xl font-playfair z-10 text-center md:text-start">
             Mark{" "}
             <span
-  ref={nameRef}
-  className="relative inline-block xs:text-deep-blue xs:font-semibold z-20"
->
-  Velasquez
-  {/* Brush effect */}
-  <span
-    className="absolute left-[-22px] top-[40%] h-auto bg-no-repeat bg-center bg-cover z-[-1]"
-    style={{
-      width: `275px`, // Match the width of the name dynamically
-      height: `70px`, // Adjust height for the natural brush aspect ratio
-      transform: "translateY(-50%)", // Center vertically beneath the name
-      backgroundImage: "url('./assets/brush.png')", // Brush stroke image
-    }}
-  ></span>
-</span>
+              ref={nameRef}
+              className="relative inline-block xs:text-deep-blue xs:font-semibold z-20"
+            >
+              Velasquez
+              {/* Brush effect */}
+              <span
+                className="absolute left-[-22px] top-[40%] h-auto bg-no-repeat bg-center bg-cover z-[-1]"
+                style={{
+                  width: `275px`, // Match the width of the name dynamically
+                  height: `70px`, // Adjust height for the natural brush aspect ratio
+                  transform: "translateY(-50%)", // Center vertically beneath the name
+                  backgroundImage: "url('./assets/brush.png')", // Brush stroke image
+                }}
+              ></span>
+            </span>
           </p>
           <p className="mt-10 mb-7 text-sm text-center md:text-start">
-          Hi, I’m Mark Velasquez, a skilled MERN Stack developer with a strong focus on front and back-end web development. Combining technical expertise with a passion for crafting user-centric solutions, I specialize in building responsive, interactive, and scalable applications. My approach blends creativity, precision, and a commitment to delivering impactful results, whether through dynamic interfaces or robust full-stack systems.
+            Hi, I’m Mark Velasquez, a skilled MERN Stack developer with a strong
+            focus on front and back-end web development. Combining technical
+            expertise with a passion for crafting user-centric solutions, I
+            specialize in building responsive, interactive, and scalable
+            applications. My approach blends creativity, precision, and a
+            commitment to delivering impactful results, whether through dynamic
+            interfaces or robust full-stack systems.
           </p>
         </motion.div>
 

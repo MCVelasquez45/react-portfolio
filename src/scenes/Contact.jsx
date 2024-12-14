@@ -1,25 +1,40 @@
-import LineGradient from "../components/LineGradient";
-import { useForm } from "react-hook-form";
+import React from "react";
 import { motion } from "framer-motion";
 
-const Contact = () => {
-  const {
-    register,
-    trigger,
-    formState: { errors },
-  } = useForm();
+export default function Contact() {
+  const [result, setResult] = React.useState("");
 
-  const onSubmit = async (e) => {
-    console.log("~ e", e);
-    const isValid = await trigger();
-    if (!isValid) {
-      e.preventDefault();
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+
+    const formData = new FormData(event.target);
+    formData.append("access_key", "3ecc1d5b-73a6-4913-8d87-ba44f6e35b7d");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Form Submitted Successfully");
+        event.target.reset();
+      } else {
+        console.error("Error", data);
+        setResult(data.message || "Submission failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission Error:", error);
+      setResult("An unexpected error occurred. Please try again later.");
     }
   };
 
   return (
-    <section id="contact" className="contact py-48">
-      {/* HEADINGS */}
+    <section id="contact" className="py-48">
+      {/* Header */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -32,17 +47,18 @@ const Contact = () => {
         className="flex justify-end w-full"
       >
         <div>
-          <p className="font-playfair font-semibold text-4xl">
+          <h2 className="font-playfair font-semibold text-4xl">
             <span className="text-yellow">CONTACT ME</span> TO GET STARTED
-          </p>
+          </h2>
           <div className="flex md:justify-end my-5">
-            <LineGradient width="w-1/2" />
+            <div className="w-1/2 h-1 bg-gradient-to-r from-yellow to-red"></div>
           </div>
         </div>
       </motion.div>
 
-      {/* FORM & IMAGE */}
-      <div className="md:flex md:justify-between gap-16 mt-5">
+      {/* Form and Image Section */}
+      <div className="md:flex md:justify-between gap-16 mt-10">
+        {/* Left Side: Image */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -54,9 +70,14 @@ const Contact = () => {
           }}
           className="basis-1/2 flex justify-center"
         >
-          <img src="../assets/contact-image.jpeg" alt="contact" />
+          <img
+            src="../assets/contact-image.jpeg"
+            alt="Contact"
+            className="rounded-lg shadow-lg"
+          />
         </motion.div>
 
+        {/* Right Side: Form */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -66,77 +87,57 @@ const Contact = () => {
             hidden: { opacity: 0, y: 50 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="basis-1/2 mt-10 md:mt-0"
+          className="basis-1/2"
         >
-          <form
-            target="_blank"
-            onSubmit={onSubmit}
-            action="https://formsubmit.co/e8a5bdfa807605332f809e5656e27c6e"
-            method="POST"
-          >
+          <form onSubmit={onSubmit} className="space-y-6">
+            {/* Web3Forms Access Key */}
             <input
-              className="w-full bg-blue font-semibold placeholder-opaque-black p-3"
-              type="text"
-              placeholder="NAME"
-              {...register("name", {
-                required: true,
-                maxLength: 100,
-              })}
+              type="hidden"
+              name="access_key"
+              value="3ecc1d5b-73a6-4913-8d87-ba44f6e35b7d"
             />
-            {errors.name && (
-              <p className="text-red mt-1">
-                {errors.name.type === "required" && "This field is required."}
-                {errors.name.type === "maxLength" && "Max length is 100 char."}
-              </p>
-            )}
 
+            {/* Name Input */}
             <input
-              className="w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5"
               type="text"
-              placeholder="EMAIL"
-              {...register("email", {
-                required: true,
-                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              })}
+              name="name"
+              placeholder="Your Name"
+              required
+              className="w-full bg-blue font-semibold placeholder-opaque-black p-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-yellow"
             />
-            {errors.email && (
-              <p className="text-red mt-1">
-                {errors.email.type === "required" && "This field is required."}
-                {errors.email.type === "pattern" && "Invalid email address."}
-              </p>
-            )}
 
+            {/* Email Input */}
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+              className="w-full bg-blue font-semibold placeholder-opaque-black p-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-yellow"
+            />
+
+            {/* Message Input */}
             <textarea
-              className="w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5"
               name="message"
-              placeholder="MESSAGE"
-              rows="4"
-              cols="50"
-              {...register("message", {
-                required: true,
-                maxLength: 2000,
-              })}
-            />
-            {errors.message && (
-              <p className="text-red mt-1">
-                {errors.message.type === "required" &&
-                  "This field is required."}
-                {errors.message.type === "maxLength" &&
-                  "Max length is 2000 char."}
-              </p>
-            )}
+              placeholder="Your Message"
+              required
+              rows="5"
+              className="w-full bg-blue font-semibold placeholder-opaque-black p-3 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-yellow"
+            ></textarea>
 
+            {/* Submit Button */}
             <button
-              className="p-5 bg-yellow font-semibold text-deep-blue mt-5 hover:bg-red hover:text-white transition duration-500"
               type="submit"
+              className="w-full p-4 bg-yellow font-semibold text-deep-blue rounded-md shadow-md hover:bg-red hover:text-white transition duration-300"
             >
-              SEND ME A MESSAGE
+              Send Message
             </button>
           </form>
+          {/* Result Message */}
+          <span className="mt-4 block text-center font-semibold text-red">
+            {result}
+          </span>
         </motion.div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}
