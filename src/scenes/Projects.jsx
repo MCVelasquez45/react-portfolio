@@ -15,7 +15,7 @@ const projectVariant = {
   visible: { opacity: 1, scale: 1 },
 };
 
-// Enhanced Project Component to Support External Links
+// Enhanced Project Component to Support External Links or "Coming Soon" Message
 const Project = ({ title, link }) => {
   const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-90 transition duration-500
     bg-grey z-30 flex flex-col justify-center items-center text-center p-16 text-deep-blue`;
@@ -28,8 +28,8 @@ const Project = ({ title, link }) => {
         <p className="mt-7">
           These projects showcase a variety of tech stacks I am currently working with, reflecting my passion for exploring innovative solutions and refining my technical skills. I’d be happy to discuss my development processes in detail—feel free to reach out! Additionally, you can view all the code for these projects on my GitHub.
         </p>
-        {/* Conditional rendering of external link */}
-        {link && (
+        {/* Conditional rendering for link or fallback message */}
+        {link && link !== "#" ? (
           <a
             href={link}
             target="_blank"
@@ -38,6 +38,10 @@ const Project = ({ title, link }) => {
           >
             View Project
           </a>
+        ) : (
+          <p className="mt-5 text-yellow-500">
+            This project is coming soon. Stay tuned!
+          </p>
         )}
       </div>
       <img src={`../assets/${projectTitle}.jpeg`} alt={projectTitle} />
@@ -71,7 +75,6 @@ const Projects = () => {
         <p className="mt-10 mb-10">
           Explore a curated collection of my software development projects, each reflecting my skills in front-end and back-end development. From building dynamic user interfaces to implementing robust back-end functionality, these projects demonstrate creativity, technical expertise, and problem-solving skills. Each project highlights a unique challenge and the tools and technologies used to overcome it, such as React, Node.js, MongoDB, and more.
         </p>
-
       </motion.div>
 
       {/* PROJECTS */}
@@ -90,17 +93,17 @@ const Projects = () => {
           >
             BEAUTIFUL USER INTERFACES
           </div>
-          <Project title="Project 1" link="https://spotiy-api-project-rux9.vercel.app/" />
-          <Project title="Project 2" />
+          <Project title="Project 1" link="https://vectorsquare.vercel.app/" />
+          <Project title="Project 2" link="https://spotiy-api-project-rux9.vercel.app/" />
 
           {/* ROW 2 */}
-          <Project title="Project 3" link="https://example.com/project3" />
-          <Project title="Project 4" />
-          <Project title="Project 5" link="https://example.com/project5" />
+          <Project title="Project 3" link="#" />
+          <Project title="Project 4" link="#" />
+          <Project title="Project 5" link="#" />
 
           {/* ROW 3 */}
-          <Project title="Project 6" />
-          <Project title="Project 7" />
+          <Project title="Project 6" link="#" />
+          <Project title="Project 7" link="#" />
           <div
             className="flex justify-center text-center items-center p-10 bg-blue
               max-w-[400px] max-h-[400px] text-2xl font-playfair font-semibold"
