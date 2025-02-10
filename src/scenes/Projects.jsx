@@ -73,7 +73,7 @@ const Projects = () => {
           </div>
         </div>
         <p className="mt-10 mb-10">
-        Explore a showcase of software development projects demonstrating my expertise in front-end and back-end development. From dynamic user interfaces to robust back-end solutions, these projects highlight creativity, technical skills, and problem-solving with tools like React, Node.js, MongoDB, and more.
+       .
         </p>
       </motion.div>
 
@@ -97,7 +97,7 @@ const Projects = () => {
           <Project title="Project 2" link="https://spotiy-api-project-rux9.vercel.app/" />
 
           {/* ROW 2 */}
-          <Project title="Project 3" link="#" />
+          <Project title="Project 3" link="https://www.secure-thebag.com" />
           <Project title="Project 4" link="#" />
           <Project title="Project 5" link="#" />
 
